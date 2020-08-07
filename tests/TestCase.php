@@ -25,4 +25,33 @@ abstract class TestCase extends BaseTestCase
 
         return $this;
     }
+
+    protected function setUp(): void
+    {
+        parent::setUp();
+
+        $this->disableForeignKeys();
+    }
+
+    /**
+     * Disable foreign keys.
+     *
+     * @return void
+     */
+    public function disableForeignKeys()
+    {
+        $db = app()->make('db');
+        $db->getSchemaBuilder()->disableForeignKeyConstraints();
+    }
+
+    /**
+     * Enables foreign keys.
+     *
+     * @return void
+     */
+    public function enableForeignKeys()
+    {
+        $db = app()->make('db');
+        $db->getSchemaBuilder()->enableForeignKeyConstraints();
+    }
 }

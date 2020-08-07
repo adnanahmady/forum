@@ -10,7 +10,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 class BestReplyTest extends TestCase
 {
     use DatabaseMigrations;
-    
+
     /** @test */
     public function thread_creator_may_mark_any_reply_as_the_best_reply()
     {
@@ -41,6 +41,7 @@ class BestReplyTest extends TestCase
     /** @test */
     public function by_delete_best_reply_thread_knows()
     {
+        $this->enableForeignKeys();
         $this->withoutExceptionHandling();
         $this->be(factory('App\User')->create());
 
