@@ -16,6 +16,7 @@ git clone git@github.com:adnanahmady/forum.git
 cd forum && composer install
 cp .env.example .env
 php artisan key:generate
+php artisan storage:link
 ```
 
 ### Step 2.
