@@ -31,22 +31,6 @@ DB_USERNAME=root
 DB_PASSWORD=
 ```
 
-### Step 3.
-reCAPTCHA is a Google tool to help prevent forum spam. You'll need to create a free account (don't worry, it's quick).
-
-> https://www.google.com/recaptcha/about
-
-Choose reCAPTCHA V2, and specify your local (and eventually production) domain name, as illustrated in the image below.
-
-![recaptcha register site](https://developers.google.com/recaptcha/images/settings.png)
-
-Once submitted, you'll see two important keys that should be referenced in you `.env` file.
-
-```dotenv
-RECAPTCHA_SITE_KEY=PASTE_KEY_HERE
-RECAPTCHA_SECRET_KEY=PASTE_SECRET_KEY_HERE
-```
-
 ### Step 4.
 
 Until an administration portal is available, manually insert any number of "channels" (think of these as forum categories) into the "channels" table in your database.
