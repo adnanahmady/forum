@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Constants\Reputation;
 use App\Traits\RecordActivity;
 use App\Traits\SanitizeBody;
 use Carbon\Carbon;
@@ -32,6 +33,8 @@ class Reply extends Model
 
         static::created(function ($model) {
             $model->thread->increment('replies_count');
+
+            Reputation::award($model->owner, Reputation::REPLY_POSTED);
         });
     }
 
@@ -72,13 +75,14 @@ class Reply extends Model
         if (!$this->favorites()->where($arguments)->exists())
         {
             $this->favorites()->create($arguments);
+
+            Reputation::award($this->owner, Reputation::REPLY_MARKED_AS_FAVORITE);
         }
     }
 
     public function favorites()
     {
-        return $this
-            ->morphMany(Favorite::class, 'favoriteable');
+        return $this->morphMany(Favorite::class, 'favoriteable');
     }
 
     public function setBodyAttribute($body)

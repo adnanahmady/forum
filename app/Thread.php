@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Constants\Reputation;
 use App\Custom\Keys\Thread as ThreadKey;
 use App\Custom\Visits;
 use App\Events\ThreadHasNewReply;
@@ -46,6 +47,8 @@ class Thread extends Model
 
         static::creating(function ($model) {
             $model->slug = $model->title;
+
+            Reputation::award($model->creator, Reputation::THREAD_WAS_PUBLISHED);
         });
     }
 
@@ -157,6 +160,8 @@ class Thread extends Model
     public function bestReply(Reply $reply)
     {
         $this->update(['best_reply_id' => (int)$reply->id]);
+
+        Reputation::award($reply->owner, Reputation::BEST_REPLY_AWARDED);
     }
 
     public function setLock($lock = true)
