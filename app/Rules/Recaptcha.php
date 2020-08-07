@@ -33,7 +33,7 @@ class Recaptcha implements Rule
                 [
                     'form_params' =>
                         [
-                            'secret' => env('RECAPTCHA_SECRET_KEY'),
+                            'secret' => config('forum.recaptcha.secret'),
                             'response' => $value,
                             'remoteip' => request()->ip()
                         ]

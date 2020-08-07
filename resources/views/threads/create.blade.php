@@ -45,7 +45,7 @@
                                 <wysiwyg name="body" value="{{ old('body') }}"></wysiwyg>
                             </div>
                             <div class="form-group">
-                                <div class="g-recaptcha" data-sitekey="{{ env('RECAPTCHA_SITE_KEY') }}"></div>
+                                <div class="g-recaptcha" data-sitekey="{{ config('forum.recaptcha.key') }}"></div>
                             </div>
                         </div>
                         <div class="card-footer">
