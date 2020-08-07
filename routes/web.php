@@ -22,7 +22,7 @@ Route::get('/register/confirm', 'Auth\RegisterConfirmationController@update')->n
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::post('/threads', 'ThreadController@store')->middleware('most-confirm-email');
-Route::get('/threads/create', 'ThreadController@create');
+Route::get('/threads/create', 'ThreadController@create')->middleware('most-confirm-email');
 Route::get('/threads/search', 'SearchThreadController@index');
 Route::get('/threads/{channel?}', 'ThreadController@index');
 Route::get('/threads/{channel}/{thread}', 'ThreadController@show');
