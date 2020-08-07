@@ -14,8 +14,8 @@ Begin by cloning this repository to your machine, and installing all Composer de
 ```bash
 git clone git@github.com:adnanahmady/forum.git
 cd forum && composer install
-php artisan key:generate
 cp .env.example .env
+php artisan key:generate
 ```
 
 ### Step 2.
